@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - The Chill Guys</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for the About Us page */
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 20px; /* Adds space between team members */
+        }
 
+        .team-member {
+            flex: 1 1 calc(33.33% - 20px);
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .team-member {
+                flex: 1 1 100%; /* Stack vertically on mobile */
+            }
+        }
+
+        .group-name {
+            font-size: 1.2em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Adjust container width for desktop */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header .group-name {
+            font-size: 1.5em;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <p class="group-name">The Chill Guys</p>
+    </header>
+
+    <div class="container">
+        <h2>Our Team</h2>
+        <p class="group-name">We are "The Chill Guys"!</p>
+        <div class="team">
+            <div class="team-member">
+                <img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member 1">
+                <h3>Member 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="team-member">
+                <img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member 2">
+                <h3>Member 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="team-member">
+                <img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member 3">
+                <h3>Member 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+			<div class="team-member">
+                <img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member 4">
+                <h3>Member 4</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
