@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Apply For IT Job" />
+    <meta name="author" content="Bui The Nam"  />
+    <title>Job Application Form</title>
+</head>
+
+<body>
+    <h1>Job Application Form</h1>
+    <p>Please fill out the form below to apply for a position with us</p>
+    <form id="application" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">     
+        <fieldset>
+            <legend>Job Reference Number</legend>
+            <label for="JobRef"></label>
+            <input type="text" name="JobRef" id="JobRef" placeholder="5 alphanumeric characters." pattern="[A-Za-z0-9]{5}" title="Must be exactly 5 alphanumeric characters" required="required">
+        </fieldset>
+        <fieldset>
+            <legend>Information</legend>
+            <p><label for="FirstName">First Name:</label>
+                <input type="text" name="FirstName" id="FirstName" maxlength="20" required="required"/>
+                <label for="LastName">Last Name:</label>
+                <input type="text" name="LastName" id="LastName" maxlength="20" required="required"/>
+            </p>
+            <p><label for="BirthDate">Date Of Birth</label>
+                <input type="date" name="BirthDate" id="BirthDate">
+            </p>
+            <fieldset>
+                <legend>Gender</legend>
+                <label><input type="radio" name="Gender" value="Male" required="required"> Male</label>
+                <label><input type="radio" name="Gender" value="Female"> Female</label>
+                <label><input type="radio" name="Gender" value="Other"> Other</label>
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <legend>Location</legend>
+            <p><label for="Address">Street Address:</label>
+                <input type="text" name="Address" id="Address" maxlength="40" placeholder="max 40 characters" title="Maximum number of 40 characters" required="required">
+            </p>
+            <p><label for="Suburb">Suburb/Town:</label>
+                <input type="text" name="Suburb" id="Suburb" maxlength="40" placeholder="max 40 characters" title="Maximum number of 40 characters" required="required">
+            </p>
+            <p><label for="State">State:</label>
+                <select name="State" id="State" required="required">
+                <option value="">--Please Select--</option>
+                <option value="VIC">VIC</option>
+                <option value="NSW">NSW</option>
+                <option value="QLD">QLD</option>
+                <option value="NT">NT</option>
+                <option value="WA">WA</option>
+                <option value="SA">SA</option>
+                <option value="TAS">TAS</option>
+                <option value="ACT">ACT</option>
+            </select>
+            </p>
+            <p><label for="Post">Postcode:</label>
+                <input type="text" name="Post" id="Post" placeholder="4 digits" pattern="\d{4}" title="Exactly 4 digits" required="required">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Contacts</legend>
+            <p><label for="Email">Email Address:</label>
+                <input type="email" name="Email" id="Email" required="required">
+            </p>
+            <p><label for="Phone">Phone Number:</label>
+                <input type="text" name="Phone" id="Phone" pattern="[\d\s]{8,12}" placeholder="8-12 digits/spaces" title="8 to 12 digits, or spaces" required="required">
+            </p> 
+        </fieldset>
+        <fieldset>
+            <legend>Skills</legend>
+            <p>
+                <label for="HTML">HTML</label>
+                <input type="checkbox" name="Skills[]" id="html" value="html" checked="checked">
+            </p>
+                <label for="CSS">CSS</label>
+                <input type="checkbox" name="Skills[]" id="css" value="css">
+            <p>
+                <label for="JavaScript">JavaScript</label>
+                <input type="checkbox" name="Skills[]" id="java" value="java">
+            </p>
+                <label for="PHP">PHP</label>
+                <input type="checkbox" name="Skills[]" id="php" value="php">
+            <p>
+                <label for="MySQL">MySQL</label>
+                <input type="checkbox" name="Skills[]" id="sql" value="sql">
+            </p>
+                <label for="C++">C++</label>
+                <input type="checkbox" name="Skills[]" id="c++" value="c++">
+            <p>
+                <label for="C#">C#</label>
+                <input type="checkbox" name="Skills[]" id="c#" value="c#">
+            </p>
+                <label for="Others">Other Skills</label>
+                <input type="checkbox" name="Skills[]" id="others" value="others">
+            <p>If you have chosen Other Skills, please list them below:</p>
+            <p>
+                <label for="OtherSkills"></label>
+                <textarea name="OtherSkills" id="OtherSkills" placeholder="Please list any other skills you may have..." rows="4" cols="40"></textarea>
+            </p>
+        </fieldset>
+        <input type="submit" value="Apply"/> 
+        <input type="reset" value="Reset form"/>
+        </form>
+</body>
