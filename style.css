@@ -67,3 +67,63 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+/* Additional styles for the About Us page */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px; /* Adds space between team members */
+}
+
+.team-member {
+    flex: 1 1 calc(33.33% - 20px);
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .team-member {
+        flex: 1 1 100%; /* Stack vertically on mobile */
+    }
+}
+
+.group-name {
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Adjust container width for desktop */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header .group-name {
+    font-size: 1.5em;
+    color: #ccc;
+}
