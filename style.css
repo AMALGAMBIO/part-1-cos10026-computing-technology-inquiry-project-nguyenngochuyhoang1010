@@ -127,3 +127,9 @@ header .group-name {
     font-size: 1.5em;
     color: #ccc;
 }
+
+.head2 {
+    text-align: center; 
+    background-color: lightblue; 
+    border-style:ridge;
+}
