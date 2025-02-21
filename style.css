@@ -136,3 +136,18 @@ footer {
     background-color: lightblue; 
     border-style:ridge;
 }
+
+.team-member {
+    margin: 2rem 0;
+}
+
+.team-member h2 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.team-member p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
