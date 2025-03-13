@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhancements</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enhancements-container">
 
+    <?php include 'header.inc'; ?>
+    <?php include 'menu.inc'; ?>
+
+    <h1>Enhancements</h1>
+    <p>This page describes the additional enhancements implemented in our job search portal.</p>
+
+    <section>
+        <h2>1. CSS Animations & Transitions</h2>
+        <p>
+            We have implemented smooth hover effects on buttons and links using CSS transitions. 
+            This improves the user experience by providing visual feedback.
+        </p>
+        <p><strong>Code Used:</strong></p>
+        <pre>
+button:hover {
+    background-color: #4CAF50;
+    transition: background-color 0.3s ease-in-out;
+}
+        </pre>
+        <p>Example applied: <a href="apply.php">Apply Page</a></p>
+        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions">MDN CSS Transitions</a></p>
+    </section>
+
+    <section>
+        <h2>2. Responsive Design</h2>
+        <p>
+            We have used CSS media queries to make the website mobile-friendly.
+            The layout adjusts based on the screen size for better readability.
+        </p>
+        <p><strong>Code Used:</strong></p>
+        <pre>
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    nav ul {
+        display: block;
+        text-align: center;
+    }
+}
+        </pre>
+        <p>Example applied: <a href="index.php">Home Page</a></p>
+        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">MDN Media Queries</a></p>
+    </section>
+
+    <?php include 'footer.inc'; ?>
+
+</body>
+</html>
