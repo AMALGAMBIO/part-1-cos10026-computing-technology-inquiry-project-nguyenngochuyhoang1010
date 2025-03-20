@@ -1,6 +1,6 @@
 
 <?php include 'menu.php'; ?>
-<link rel="stylesheet" href="vscode/styles/styleapply.css">
+<link rel="stylesheet" href="styles\styleapply.css">
 <div class="container">
     <h1 class="form-title" text-align="right">Job Application Form</h1>
     <p class="form-subtitle">Please fill out the form below to apply for a position with us.</p>
