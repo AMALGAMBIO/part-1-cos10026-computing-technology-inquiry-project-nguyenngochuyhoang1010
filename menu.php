@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="stylemenu.css">
+<link rel="stylesheet" href="styles/stylemenu.css">
 
 <nav class="navbar">
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
