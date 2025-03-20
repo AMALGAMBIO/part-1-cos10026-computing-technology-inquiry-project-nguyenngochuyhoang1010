@@ -48,6 +48,8 @@ button:hover {
                 </pre>
             </div>
             <p>Example applied: <a href="index.php">Home Page</a></p>
+
+            <p>See more updates: <a href ="enhancement2.php">Second Update</a> <a href ="phpenhancement.php">System Update</a></p>
         </section>
     </div>
 
