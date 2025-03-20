@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="stylemenu.css">
 <nav class="navbar">
-    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
     <div id="menu-box" class="menu-box">
         <ul class="menu-list">
             <li><a href="index.php">Home</a></li>
@@ -15,10 +15,17 @@
 <script>
     function toggleMenu() {
         var menu = document.getElementById("menu-box");
-        if (menu.style.display === "block") {
-            menu.style.display = "none";
-        } else {
-            menu.style.display = "block";
-        }
+        menu.classList.toggle("show-menu");
     }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function(event) {
+        var menu = document.getElementById("menu-box");
+        var button = document.querySelector(".menu-btn");
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+            menu.classList.remove("show-menu");
+        }
+    });
 </script>
+
+
