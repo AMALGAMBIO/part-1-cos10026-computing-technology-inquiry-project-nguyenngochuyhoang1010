@@ -9,7 +9,7 @@
 <body>
 
     <?php include 'header.inc'; ?>
-    <?php include 'menu.inc'; ?>
+    <?php include 'menu.php'; ?>
 
     <div class="enhancements-container">
         <h1>Enhancements</h1>

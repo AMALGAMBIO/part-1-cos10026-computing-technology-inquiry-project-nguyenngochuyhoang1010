@@ -1,14 +1,66 @@
-<?php include 'header.inc'; ?>
-<?php include 'menu.inc'; ?>
+<?php include_once "header.inc"; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Portal</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="jobs.php">Jobs</a></li>
+            <li><a href="enhancement.php">Updates</a></li>
+            <li><a href="about.php">About Us</a></li>
+        </ul>
+    </nav>
+    
+    <section class="search">
+        <h2>Find Your Dream Job</h2>
+        <form action="search.php" method="get">
+            <input type="text" name="keywords" placeholder="Keywords">
+            <input type="text" name="location" placeholder="Location">
+            <input type="text" name="company" placeholder="Company">
+            <button type="submit">Search</button>
+        </form>
+    </section>
 
-<section class="search">
-    <h2>Find Your Dream Job</h2>
-    <form action="jobs.php" method="get">
-        <input type="text" name="keywords" placeholder="Keywords">
-        <input type="text" name="location" placeholder="Location">
-        <input type="text" name="company" placeholder="Company">
-        <button type="submit">Search</button>
-    </form>
-</section>
+    <section class="job-listings">
+        <h2>Latest Job Listings</h2>
+        <ul>
+            <li>
+                <h3>Frontend Developer</h3>
+                <p>Company: Solis Lab</p>
+                <p>Location: Ho Chi Minh</p>
+                <p>Description: Solis Lab is hiring now Frontend Dev - HTML5/CSS3/JavaScript. Join Solis Lab, a dynamic team crafting websites for top-tier brands with millions of monthly views.</p>
+                <a href="apply.php">Apply Now</a>
+            </li>
+            <li>
+                <h3>Backend Developer</h3>
+                <p>Company: Med-aid</p>
+                <p>Location: Ho Chi Minh </p>
+                <p>Description: <br>Develop and maintain high-quality, scalable backend APIs using Python, specifically with the FastAPI framework.<br>
+                Design and implement efficient database interactions to handle data from systems like Cassandra, PostgreSQL.<br>
+                Collaborate closely with frontend and firmware teams to ensure smooth API integration.<br>
+                Troubleshoot and optimize application performance and infrastructure.</p>
+                <a href="apply.php">Apply Now</a>
+            </li>
+            <li>
+                <h3>DevOps Engineer</h3>
+                <p>Company: HSC</p>
+                <p>Location: Ho Chi Minh</p>
+                <p>• Consulting with management on the operational requirements of software solutions, software infrastructure platform <br>
+                • Contributing expertise on information system options, risk, and operational impact.<br>
+                • Mentoring junior devops engineers in gaining experience and assuming DevOps responsibilities.<br>
+                • Managing the installation and configuration of solutions.</p>
+                <a href="apply.php">Apply Now</a>
+            </li>
+        </ul>
+    </section>
 
-<?php include 'footer.inc'; ?>
+    <?php include_once "footer.inc"; ?>
+</body>
+</html>
