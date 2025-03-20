@@ -1,8 +1,8 @@
-<?php include 'header.inc'; ?>
+
 <?php include 'menu.php'; ?>
 <link rel="stylesheet" href="styleapply.css">
 <div class="container">
-    <h1 class="form-title">Job Application Form</h1>
+    <h1 class="form-title" text-align="right">Job Application Form</h1>
     <p class="form-subtitle">Please fill out the form below to apply for a position with us.</p>
 
     <form id="application" method="post" action="process_eoi.php" novalidate="novalidate">     

@@ -9,6 +9,6 @@ echo '<!DOCTYPE html>
 </head>
 <body>
 <header>
-    <h1>Job Search Portal</h1>
+    <h1 text-align="right">Job Search Portal</h1>
 </header>';
 ?>
