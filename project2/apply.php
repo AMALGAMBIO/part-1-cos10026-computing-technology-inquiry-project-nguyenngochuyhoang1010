@@ -7,7 +7,7 @@
     <form id="application" method="post" action="process_eoi.php" novalidate="novalidate">     
         <fieldset class="form-section">
             <legend>Job Reference Number</legend>
-            <input type="text" name="JobRef" class="input-field" maxlength="5" required>
+            <input type="text" name="JobRef" class="input-field" maxlength="10" required>
         </fieldset>
 
         <fieldset class="form-section">
@@ -28,7 +28,7 @@
                     <option value="ACT">ACT</option>
                 </select>
             </label>
-            <label>Postcode: <input type="text" name="Postcode" maxlength="4" class="input-field" required></label>
+            <label>Postcode: <input type="text" name="Postcode" maxlength="5" class="input-field" required></label>
             <label>Email: <input type="email" name="Email" class="input-field" required></label>
             <label>Phone Number: <input type="text" name="Phone" maxlength="12" class="input-field" required></label>
         </fieldset>
