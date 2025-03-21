@@ -10,4 +10,14 @@ $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Enable detailed MySQL errors
+
+try {
+    $conn = new mysqli($host, $user, $password, $database);
+    echo "Connected successfully!"; // Debugging
+} catch (mysqli_sql_exception $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
 ?>
