@@ -12,10 +12,10 @@ $sql_db = "s105550173_db";
 ?>
 <?php
 
-$dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
-if($dbconn) {
+$conn = @mysqli_connect($host,$user,$pwd,$sql_db);
+if($conn) {
     $query = "SELECT * FROM jobs";
-    $result = mysqli_query($dbconn, $query);
+    $result = mysqli_query($conn, $query);
     if ($result) {
         echo "<table border='1'>";
         echo "<tr>
@@ -44,7 +44,7 @@ if($dbconn) {
     else {
         echo "There are no jobs on display.";
     }
-    mysqli_close($dbconn);
+    mysqli_close($conn);
 } else echo "<p>Unable to connect to the db.</p>";
 ?>
 </body>
