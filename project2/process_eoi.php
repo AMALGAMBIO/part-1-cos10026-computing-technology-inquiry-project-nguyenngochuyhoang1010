@@ -1,22 +1,27 @@
 <?php
 require_once 'settings.php'; // Ensure settings.php is included
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Generate a unique EOI number
-    $eoiNumber = uniqid("EOI_");
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header("Location: apply.html");
+    exit();
+}
+
+$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+if (!$conn) {
+    die("<p>Database connection failed: " . mysqli_connect_error() . "</p>");
+}
 
     // Collect form data
-    $jobReferenceNumber = $_POST["JobRef"];
-    $firstName = $_POST["FirstName"];
-    $lastName = $_POST["LastName"];
-    $street = $_POST["Address"]; // Ensure consistency in naming
-    $suburb = $_POST["Suburb"];
-    $state = $_POST["State"];
-    $postcode = $_POST["Postcode"];
-    $email = $_POST["Email"];
-    $phone = $_POST["Phone"];
-    $otherSkills = $_POST["OtherSkills"];
-    $applicationDate = date("Y-m-d"); // Capture current date
+    $job_reference = isset($_POST["job_reference"]) ? mysqli_real_escape_string($conn, trim($_POST["job_reference"])) : "";
+    $first_name = isset($_POST["first_name"]) ? mysqli_real_escape_string($conn, trim($_POST["first_name"])) : "";
+    $last_name = isset($_POST["last_name"]) ? mysqli_real_escape_string($conn, trim($_POST["last_name"])) : "";
+    $street_address = isset($_POST["street_address"]) ? mysqli_real_escape_string($conn, trim($_POST["street_address"])) : "";
+    $suburb_town = isset($_POST["suburb_town"]) ? mysqli_real_escape_string($conn, trim($_POST["suburb_town"])) : "";
+    $state = isset($_POST["state"]) ? mysqli_real_escape_string($conn, trim($_POST["state"])) : "";
+    $postcode = isset($_POST["postcode"]) ? mysqli_real_escape_string($conn, trim($_POST["postcode"])) : "";
+    $email = isset($_POST["email"]) ? mysqli_real_escape_string($conn, trim($_POST["email"])) : "";
+    $phone = isset($_POST["phone"]) ? mysqli_real_escape_string($conn, trim($_POST["phone"])) : "";
+    $other_skills = isset($_POST["other_skills"]) ? mysqli_real_escape_string($conn, trim($_POST["other_skills"])) : "";
 
     // Handle checkboxes: Collect selected skills into a single string
     $skillsArray = [];
@@ -26,25 +31,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $skills = implode(", ", $skillsArray); // Convert array to string
 
     // Prepare the SQL statement
-    $stmt = $conn->prepare("INSERT INTO eoi (EOInumber, JobReferenceNumber, FirstName, LastName, Street, Suburb, State, Postcode, Email, Phone, Skills, OtherSkills, ApplicationDate) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+if (!empty($job_reference) && !empty($first_name) && !empty($last_name) && !empty($email)) {
+    $query = "INSERT INTO eoi (job_reference, first_name, last_name, street_address, suburb_town, state, postcode, email, phone, skills, other_skills, status) 
+              VALUES ('$job_reference', '$first_name', '$last_name', '$street_address', '$suburb_town', '$state', '$postcode', '$email', '$phone', '$skills', '$other_skills', 'New')";
 
-    if (!$stmt) {
-        die("SQL error: " . $conn->error);
-    }
-
-    // Bind parameters
-    $stmt->bind_param("sssssssssssss", $eoiNumber, $jobReferenceNumber, $firstName, $lastName, $street, $suburb, $state, $postcode, $email, $phone, $skills, $otherSkills, $applicationDate);
-
-    // Execute and check result
-    if ($stmt->execute()) {
-        echo "Application submitted successfully!";
+    //Announce Result
+    if (mysqli_query($conn, $query)) {
+        $eoi_number = mysqli_insert_id($conn);
+        echo "<h2>Application Submitted Successfully!</h2>";
+        echo "<p>Thank you, <strong>$first_name $last_name</strong>. Your Expression of Interest has been recorded. 🥳🥳🥳</p>";
+        echo "<p><strong>Your EOI Number:</strong> $eoi_number</p>";
+        exit();
     } else {
-        echo "Error: " . $stmt->error;
+        echo "<p>Error submitting Application: " . mysqli_error($conn) . "</p>";
     }
-
-    // Close statement & connection
-    $stmt->close();
-    $conn->close();
+} else {
+    echo "<p>Please fill in all required fields.</p>";
 }
+    // Close connection
+mysqli_close($conn);
 ?>
