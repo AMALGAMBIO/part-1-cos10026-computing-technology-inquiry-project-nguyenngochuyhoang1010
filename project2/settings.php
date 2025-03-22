@@ -1,8 +1,8 @@
 <?php
 $host = "feenix-mariadb.swin.edu.au";
-$user = "s105514373"; 
-$password = "230901";
-$database = "s105514373_db"; 
+$user = "s105550173";
+$pwd = "Nam105550173";
+$sql_db = "s105550173_db";
 
 $conn = new mysqli($host, $user, $password, $database);
 
