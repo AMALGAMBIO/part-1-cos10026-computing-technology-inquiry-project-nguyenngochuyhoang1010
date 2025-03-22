@@ -1,7 +1,7 @@
 <?php
 $host = "feenix-mariadb.swin.edu.au";
 $user = "s105514373";
-$pwd = "290301";
+$pwd = "230901";
 $sql_db = "s105514373_db";
 
 $conn = new mysqli($host, $user, $pwd, $sql_db);
