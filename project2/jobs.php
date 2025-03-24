@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Position Description</title>
 </head>
 <body>
+<?php
+$host = "feenix-mariadb.swin.edu.au";
+$user = "s105550173";
+$pwd = "Nam105550173";
+$sql_db = "s105550173_db";
+?>
+<?php
 
-$conn = @mysqli_connect($host,$user,$pwd,$sql_db);
-if($conn) {
+$dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
+if($dbconn) {
     $query = "SELECT * FROM jobs";
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($dbconn, $query);
     if ($result) {
         echo "<table border='1'>";
         echo "<tr>
@@ -40,9 +44,8 @@ if($conn) {
     else {
         echo "There are no jobs on display.";
     }
-    mysqli_close($conn);
+    mysqli_close($dbconn);
 } else echo "<p>Unable to connect to the db.</p>";
 ?>
 </body>
 </html>
-
