@@ -1,7 +1,5 @@
 <?php
 require_once "settings.php";
-include 'header.inc';
-include 'menu.php';
 
 $filter = "";
 if (isset($_GET['job_ref'])) {
