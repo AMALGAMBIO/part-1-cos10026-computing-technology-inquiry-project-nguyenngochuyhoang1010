@@ -28,10 +28,10 @@
         <div class="team">
             <?php
             $team_members = [
-                ["name" => "Bui The Nam", "role" => "apply.php and enhancements.php", "image" => "images/nambuithe.jpg"],
+                ["name" => "Bui The Nam", "role" => "apply.php and process_eoi.php", "image" => "images/nambuithe.jpg"],
                 ["name" => "Cao Viet Anh", "role" => "jobs.php", "image" => "images/cao_viet_anh.jpg"],
                 ["name" => "Nguyen Minh Thuan", "role" => "about.php", "image" => "images/nguyen_minh_thuan.jpg"],
-                ["name" => "Nguyen Ngoc Huy Hoang", "role" => "index.php and style.css", "image" => "images/nguyen_ngoc_huy_hoang.jpg"]
+                ["name" => "Nguyen Ngoc Huy Hoang", "role" => "index.php, enhancements.php and style.css", "image" => "images/nguyen_ngoc_huy_hoang.jpg"]
             ];
             
             foreach ($team_members as $member) {
