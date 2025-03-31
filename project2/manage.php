@@ -1,14 +1,12 @@
 <?php
 require_once "settings.php";
 
-// Basic session authentication (replace with your actual auth logic)
 session_start();
 if (!isset($_SESSION['manager_logged_in'])) {
     header("Location: login.php");
     exit();
 }
 
-// Display success message if redirected from update_status.php
 if (isset($_GET['update_success'])) {
     $success_message = "Status updated successfully!";
 }
