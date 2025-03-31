@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
-    <link rel="stylesheet" href="styles/style.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles/style.css"> <!-- External CSS -->
+    <link rel="stylesheet" href="styles/stylemenu.css"> <!-- Menu Styling -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,41 +18,70 @@
             color: #333;
         }
         .container {
-            max-width: 90%;
+            max-width: 800px;
             margin: auto;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .job-listings {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             margin-top: 20px;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
+        .job-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            cursor: pointer;
         }
-        th {
-            background-color: #007BFF;
-            color: white;
+        .job-card:hover, .job-card.selected {
+            border-color: red;
+            box-shadow: 0px 6px 12px rgba(255, 0, 0, 0.2);
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .job-info {
+            flex-grow: 1;
+        }
+        .job-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .job-company {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .job-tags {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .tag {
+            background: #eee;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
         }
         .apply-btn {
-            display: inline-block;
             padding: 8px 12px;
             color: white;
-            background-color: #28a745;
+            background-color: red;
             text-decoration: none;
             border-radius: 5px;
             font-size: 14px;
+            transition: 0.3s;
         }
         .apply-btn:hover {
-            background-color: #218838;
+            background-color: darkred;
         }
     </style>
 </head>
@@ -62,56 +92,53 @@
 <div class="container">
     <h1>Job Listings</h1>
     
-    <?php
-    $host = "feenix-mariadb.swin.edu.au";
-    $user = "s105550173";
-    $pwd = "Nam105550173";
-    $sql_db = "s105550173_db";
+    <div class="job-listings">
+        <?php
+        $host = "feenix-mariadb.swin.edu.au";
+        $user = "s105550173";
+        $pwd = "Nam105550173";
+        $sql_db = "s105550173_db";
 
-    $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
+        $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-    if ($dbconn) {
-        $query = "SELECT * FROM jobs";
-        $result = mysqli_query($dbconn, $query);
-        if ($result && mysqli_num_rows($result) > 0) {
-            echo "<table>";
-            echo "<tr>
-                    <th>Job ID</th>
-                    <th>Reference Number</th>
-                    <th>Job Title</th>
-                    <th>Description</th>
-                    <th>Salary</th>
-                    <th>Responsibilities</th>
-                    <th>Essential Skills</th>
-                    <th>Nice-to-have Skills</th>
-                    <th>Action</th>
-                  </tr>";
-
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['ref_num']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['title']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['description']) . "</td>";
-                echo "<td>$" . htmlspecialchars($row['salary']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['job_respon']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['main_skills']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['other_skills']) . "</td>";
-                echo "<td><a class='apply-btn' href='apply.php?job_ref=" . urlencode($row['ref_num']) . "'>Apply Now</a></td>";
-                echo "</tr>";
+        if ($dbconn) {
+            $query = "SELECT * FROM jobs";
+            $result = mysqli_query($dbconn, $query);
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='job-card' onclick='selectJob(this)'>";
+                    echo "<div class='job-info'>";
+                    echo "<div class='job-title'>" . htmlspecialchars($row['title']) . "</div>";
+                    echo "<div class='job-company'>" . htmlspecialchars($row['description']) . "</div>";
+                    echo "<div class='job-tags'>
+                            <span class='tag'>" . htmlspecialchars($row['main_skills']) . "</span>
+                            <span class='tag'>" . htmlspecialchars($row['other_skills']) . "</span>
+                          </div>";
+                    echo "</div>";
+                    echo "<a class='apply-btn' href='apply.php?job_ref=" . urlencode($row['ref_num']) . "'>Apply</a>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p style='text-align: center; color: red;'>There are no jobs available at the moment.</p>";
             }
-            echo "</table>";
+            mysqli_close($dbconn);
         } else {
-            echo "<p style='text-align: center; color: red;'>There are no jobs available at the moment.</p>";
+            echo "<p style='text-align: center; color: red;'>Unable to connect to the database.</p>";
         }
-        mysqli_close($dbconn);
-    } else {
-        echo "<p style='text-align: center; color: red;'>Unable to connect to the database.</p>";
-    }
-    ?>
-
+        ?>
+    </div>
 </div>
+
+<script>
+    function selectJob(element) {
+        document.querySelectorAll(".job-card").forEach(card => card.classList.remove("selected"));
+        element.classList.add("selected");
+    }
+</script>
+
 <?php include_once "footer.inc"; ?>
 </body>
 </html>
+
+
 
