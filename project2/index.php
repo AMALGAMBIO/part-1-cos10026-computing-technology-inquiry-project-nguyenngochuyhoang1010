@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Search Portal</title>
-    
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/indexstyle.css">
 </head>
 <body>
     <nav class="topbar">
@@ -17,50 +16,28 @@
             <li><a href="about.php">About Us</a></li>
         </ul>
     </nav>
-    
-    <section class="search">
-        <h2>Find Your Dream Job</h2>
-        <form action="search.php" method="get">
-            <input type="text" name="keywords" placeholder="Keywords">
-            <input type="text" name="location" placeholder="Location">
-            <input type="text" name="company" placeholder="Company">
-            <button type="submit">Search</button>
-        </form>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Our Job Search Portal</h1>
+        <p>Your gateway to exciting career opportunities. Whether you're a job seeker looking for your dream job or a company searching for the right talent, we are here to help.</p>
+        <a href="jobs.php" class="cta-button">Browse Jobs</a>
     </section>
 
-    <section class="job-listings">
-        <h2>Latest Job Listings</h2>
-        <ul>
-            <li>
-                <h3>Frontend Developer</h3>
-                <p>Company: Solis Lab</p>
-                <p>Location: Ho Chi Minh</p>
-                <p>Description: Solis Lab is hiring now Frontend Dev - HTML5/CSS3/JavaScript. Join Solis Lab, a dynamic team crafting websites for top-tier brands with millions of monthly views.</p>
-                <a href="apply.php">Apply Now</a>
-            </li>
-            <li>
-                <h3>Backend Developer</h3>
-                <p>Company: Med-aid</p>
-                <p>Location: Ho Chi Minh </p>
-                <p>Description: <br>Develop and maintain high-quality, scalable backend APIs using Python, specifically with the FastAPI framework.<br>
-                Design and implement efficient database interactions to handle data from systems like Cassandra, PostgreSQL.<br>
-                Collaborate closely with frontend and firmware teams to ensure smooth API integration.<br>
-                Troubleshoot and optimize application performance and infrastructure.</p>
-                <a href="apply.php">Apply Now</a>
-            </li>
-            <li>
-                <h3>DevOps Engineer</h3>
-                <p>Company: HSC</p>
-                <p>Location: Ho Chi Minh</p>
-                <p>• Consulting with management on the operational requirements of software solutions, software infrastructure platform <br>
-                • Contributing expertise on information system options, risk, and operational impact.<br>
-                • Mentoring junior devops engineers in gaining experience and assuming DevOps responsibilities.<br>
-                • Managing the installation and configuration of solutions.</p>
-                <a href="apply.php">Apply Now</a>
-            </li>
+    <!-- What We Offer Section -->
+    <section class="about-container">
+        <h2>What We Offer</h2>
+        <p>Our platform connects job seekers with top companies across various industries. We provide an easy-to-use job search experience with advanced filtering options to find jobs that match your skills and preferences.</p>
+        
+        <ul class="about-list">
+            <li>🔍 <span>Find job opportunities</span> that match your skills</li>
+            <li>🏢 <span>Discover companies</span> looking for top talent</li>
+            <li>📄 <span>Submit applications</span> quickly and efficiently</li>
+            <li>🚀 <span>Stay updated</span> with the latest job market trends</li>
         </ul>
     </section>
 
     <?php include_once "footer.inc"; ?>
 </body>
 </html>
+
