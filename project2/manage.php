@@ -1,59 +1,68 @@
-<?php
-require_once "settings.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Job Applications</title>
-    <link rel="stylesheet" href="styles/manage.css"> <!-- Link to the CSS file -->
+    <title>Managing - The Chill Guys</title>
+    <link rel="stylesheet" href="styles/manage.css">
 </head>
-<body>
+<?php
+require_once "settings.php";  // Ensure settings.php contains correct DB connection details
+include 'header.inc';
+include 'menu.php';
 
-<div class="container">
-    <h1>Manage Job Applications</h1>
+// Establish database connection
+$conn = new mysqli($host, $user, $pwd, $sql_db);
+if ($conn->connect_error) {
+    die("<p>Connection failed: " . $conn->connect_error . "</p>");
+}
 
-    <div class="filters">
-        <form method="GET" action="manage.php">
-            <label>Filter by Job Reference:</label>
-            <input type="text" name="job_ref" placeholder="Enter job reference">
-            <button type="submit">Search</button>
-        </form>
+// Initialize filter for SQL query
+$filter = "";
 
-        <form method="GET" action="manage.php">
-            <label>Filter by Applicant Name:</label>
-            <input type="text" name="name" placeholder="Enter applicant name">
-            <button type="submit">Search</button>
-        </form>
+if (isset($_GET['job_ref']) && !empty($_GET['job_ref'])) {
+    $jobRef = $conn->real_escape_string(trim($_GET['job_ref']));
+    $filter = "WHERE JobRef = '$jobRef'";
+} elseif (isset($_GET['name']) && !empty($_GET['name'])) {
+    $name = $conn->real_escape_string(trim($_GET['name']));
+    $filter = "WHERE FirstName LIKE '%$name%' OR LastName LIKE '%$name%'";
+}
 
-        <form method="GET" action="manage.php">
-            <button type="submit" class="list-all">List All EOIs</button>
-        </form>
+// Fetch EOIs based on filter
+$query = "SELECT * FROM eoi $filter ORDER BY EOInumber DESC";
+$result = $conn->query($query);
 
-        <form method="POST" action="delete_eoi.php">
-            <label>Delete EOIs by Job Reference:</label>
-            <input type="text" name="job_ref" placeholder="Enter job reference">
-            <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?')">Delete</button>
-        </form>
-    </div>
+if (!$result) {
+    die("<p>Error retrieving records: " . $conn->error . "</p>");
+}
+?>
 
-    <?php
-    $filter = "";
-    if (isset($_GET['job_ref'])) {
-        $jobRef = $conn->real_escape_string($_GET['job_ref']);
-        $filter = "WHERE JobRef = '$jobRef'";
-    } elseif (isset($_GET['name'])) {
-        $name = $conn->real_escape_string($_GET['name']);
-        $filter = "WHERE FirstName LIKE '%$name%' OR LastName LIKE '%$name%'";
-    }
+<h1>Manage Job Applications</h1>
 
-    $query = "SELECT * FROM eoi $filter ORDER BY EOInumber DESC";
-    $result = $conn->query($query);
-    ?>
+<form method="GET" action="manage.php">
+    <label>Filter by Job Reference:</label>
+    <input type="text" name="job_ref">
+    <button type="submit">Search</button>
+</form>
 
-    <table>
+<form method="GET" action="manage.php">
+    <label>Filter by Applicant Name:</label>
+    <input type="text" name="name">
+    <button type="submit">Search</button>
+</form>
+
+<form method="GET" action="manage.php">
+    <button type="submit">List All EOIs</button>
+</form>
+
+<form method="POST" action="delete_eoi.php">
+    <label>Delete EOIs by Job Reference:</label>
+    <input type="text" name="job_ref" required>
+    <button type="submit" onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?')">Delete</button>
+</form>
+
+<?php if ($result->num_rows > 0): ?>
+    <table border="1">
         <tr>
             <th>EOI Number</th>
             <th>Job Reference</th>
@@ -67,35 +76,37 @@ require_once "settings.php";
 
         <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-                <td><?= $row['EOInumber'] ?></td>
-                <td><?= $row['JobRef'] ?></td>
-                <td><?= $row['FirstName'] . " " . $row['LastName'] ?></td>
-                <td><?= $row['Email'] ?></td>
-                <td><?= $row['Phone'] ?></td>
-                <td><?= $row['Status'] ?></td>
+                <td><?= htmlspecialchars($row['EOINumber']) ?></td>
+                <td><?= htmlspecialchars($row['job_reference']) ?></td>
+                <td><?= htmlspecialchars($row['first_name']) . " " . htmlspecialchars($row['last_name']) ?></td>
+                <td><?= htmlspecialchars($row['email']) ?></td>
+                <td><?= htmlspecialchars($row['phone']) ?></td>
+                <td><?= htmlspecialchars($row['status']) ?></td>
                 <td>
                     <form method="POST" action="update_status.php">
-                        <input type="hidden" name="eoi_number" value="<?= $row['EOInumber'] ?>">
+                        <input type="hidden" name="eoi_number" value="<?= htmlspecialchars($row['EOInumber']) ?>">
                         <select name="status">
-                            <option value="New" <?= $row['Status'] == "New" ? "selected" : "" ?>>New</option>
-                            <option value="Current" <?= $row['Status'] == "Current" ? "selected" : "" ?>>Current</option>
-                            <option value="Final" <?= $row['Status'] == "Final" ? "selected" : "" ?>>Final</option>
+                            <option value="New" <?= $row['status'] == "New" ? "selected" : "" ?>>New</option>
+                            <option value="Current" <?= $row['status'] == "Current" ? "selected" : "" ?>>Current</option>
+                            <option value="Final" <?= $row['status'] == "Final" ? "selected" : "" ?>>Final</option>
                         </select>
-                        <button type="submit" class="update-btn">Update</button>
+                        <button type="submit">Update</button>
                     </form>
                 </td>
                 <td>
                     <form method="POST" action="delete_eoi.php">
-                        <input type="hidden" name="eoi_number" value="<?= $row['EOInumber'] ?>">
-                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this EOI?')">Delete</button>
+                        <input type="hidden" name="eoi_number" value="<?= htmlspecialchars($row['EOINumber']) ?>">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this EOI?')">Delete</button>
                     </form>
                 </td>
             </tr>
         <?php endwhile; ?>
     </table>
-</div>
+<?php else: ?>
+    <p>No job applications found.</p>
+<?php endif; ?>
 
-<?php include 'footer.inc'; ?>
-
-</body>
-</html>
+<?php
+$conn->close();
+include 'footer.inc';
+?>
