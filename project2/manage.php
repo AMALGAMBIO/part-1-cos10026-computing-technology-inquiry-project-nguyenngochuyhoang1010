@@ -20,16 +20,16 @@ if ($conn->connect_error) {
 // Initialize filter for SQL query
 $filter = "";
 
-if (isset($_GET['job_ref']) && !empty($_GET['job_ref'])) {
-    $jobRef = $conn->real_escape_string(trim($_GET['job_ref']));
-    $filter = "WHERE JobRef = '$jobRef'";
+if (isset($_GET['job_reference']) && !empty($_GET['job_reference'])) {
+    $job_reference = $conn->real_escape_string(trim($_GET['job_reference']));
+    $filter = "WHERE job_reference = '$job_reference'";
 } elseif (isset($_GET['name']) && !empty($_GET['name'])) {
     $name = $conn->real_escape_string(trim($_GET['name']));
-    $filter = "WHERE FirstName LIKE '%$name%' OR LastName LIKE '%$name%'";
+    $filter = "WHERE first_name LIKE '%$first_name%' OR last_name LIKE '%$last_name%'";
 }
 
 // Fetch EOIs based on filter
-$query = "SELECT * FROM eoi $filter ORDER BY EOInumber DESC";
+$query = "SELECT * FROM eoi $filter ORDER BY EOINumber DESC";
 $result = $conn->query($query);
 
 if (!$result) {
@@ -41,13 +41,13 @@ if (!$result) {
 
 <form method="GET" action="manage.php">
     <label>Filter by Job Reference:</label>
-    <input type="text" name="job_ref">
+    <input type="text" name="job_reference">
     <button type="submit">Search</button>
 </form>
 
 <form method="GET" action="manage.php">
     <label>Filter by Applicant Name:</label>
-    <input type="text" name="name">
+    <input type="text" name="first_name">
     <button type="submit">Search</button>
 </form>
 
