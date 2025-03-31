@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <nav>
+    <nav class="topbar">
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="jobs.php">Jobs</a></li>

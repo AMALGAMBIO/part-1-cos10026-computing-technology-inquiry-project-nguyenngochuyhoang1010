@@ -18,7 +18,7 @@ header {
     padding: 1rem 0;
 }
 
-nav ul {
+.topbar ul {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -26,18 +26,18 @@ nav ul {
     padding: 0.5rem 0;
 }
 
-nav li {
+.topbar li {
     margin-right: 20px;
 }
 
-nav a {
+.topbar a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-nav a:hover {
+.topbar a:hover {
     color: #ff6600;
 }
 

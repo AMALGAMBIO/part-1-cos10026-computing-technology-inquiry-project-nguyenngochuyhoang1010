@@ -18,6 +18,7 @@
             <a href="manage.php">Manage Applications</a> <!-- Link to manage.php -->
         </nav>
     </header>
+    <?php include 'menu.php'; ?>
 
     <div class="container">
         <h2>Our Team</h2>
@@ -27,16 +28,16 @@
         <div class="team">
             <?php
             $team_members = [
-                ["name" => "Bui The Nam", "role" => "apply.php and enhancements.php"],
-                ["name" => "Cao Viet Anh", "role" => "jobs.php"],
-                ["name" => "Nguyen Minh Thuan", "role" => "about.php"],
-                ["name" => "Nguyen Ngoc Huy Hoang", "role" => "index.php and style.css"]
+                ["name" => "Bui The Nam", "role" => "apply.php and enhancements.php", "image" => "images/nambuithe.jpg"],
+                ["name" => "Cao Viet Anh", "role" => "jobs.php", "image" => "images/cao_viet_anh.jpg"],
+                ["name" => "Nguyen Minh Thuan", "role" => "about.php", "image" => "images/nguyen_minh_thuan.jpg"],
+                ["name" => "Nguyen Ngoc Huy Hoang", "role" => "index.php and style.css", "image" => "images/nguyen_ngoc_huy_hoang.jpg"]
             ];
             
             foreach ($team_members as $member) {
                 echo '<div class="team-member">';
                 echo '<figure>';
-                echo '<img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member">';
+                echo '<img src="' . htmlspecialchars($member["image"]) . '" alt="' . htmlspecialchars($member["name"]) . '" width="160" height="160">';
                 echo '<figcaption>' . htmlspecialchars($member["name"]) . '</figcaption>';
                 echo '</figure>';
                 echo '<p>Hello, I made ' . htmlspecialchars($member["role"]) . '.</p>'; // Single line
@@ -82,5 +83,7 @@
             </tr>
         </table>
     </div>
+    <?php include_once "footer.inc"; ?>
 </body>
 </html>
+

@@ -57,6 +57,8 @@
 </head>
 <body>
 
+<?php include 'menu.php'; ?>
+
 <div class="container">
     <h1>Job Listings</h1>
     
@@ -109,7 +111,7 @@
     ?>
 
 </div>
-
+<?php include_once "footer.inc"; ?>
 </body>
 </html>
 
