@@ -14,7 +14,8 @@
             <dd>The Chill Guys</dd>
         </dl>
         <nav>
-            <a href="index.php">Home</a>
+            <a href="index.php">Home</a> |
+            <a href="manage.php">Manage Applications</a> <!-- Link to manage.php -->
         </nav>
     </header>
 
@@ -38,10 +39,7 @@
                 echo '<img src="https://media.discordapp.net/attachments/1246979738057314374/1310354506457813092/wesh-cat.gif?ex=67b05c7b&is=67af0afb&hm=54a245935846e6c66a719943460e246f5d1fcde8d7720c64b5e3d1c4fa3b87e6&=&width=160&height=160" alt="Team Member">';
                 echo '<figcaption>' . htmlspecialchars($member["name"]) . '</figcaption>';
                 echo '</figure>';
-                echo '<dl>';
-                echo '<dt>' . htmlspecialchars($member["name"]) . '</dt>';
-                echo '<dd>Hello, I made ' . htmlspecialchars($member["role"]) . '.</dd>';
-                echo '</dl>';
+                echo '<p>Hello, I made ' . htmlspecialchars($member["role"]) . '.</p>'; // Single line
                 echo '</div>';
             }
             ?>
