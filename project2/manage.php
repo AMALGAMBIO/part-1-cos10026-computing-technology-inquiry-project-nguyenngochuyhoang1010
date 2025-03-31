@@ -1,5 +1,17 @@
 <?php
 require_once "settings.php";
+
+// Basic session authentication (replace with your actual auth logic)
+session_start();
+if (!isset($_SESSION['manager_logged_in'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Display success message if redirected from update_status.php
+if (isset($_GET['update_success'])) {
+    $success_message = "Status updated successfully!";
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +26,10 @@ require_once "settings.php";
 
 <div class="container">
     <h1>Manage Job Applications</h1>
+
+    <?php if (isset($success_message)): ?>
+        <div class="success-message"><?= htmlspecialchars($success_message) ?></div>
+    <?php endif; ?>
 
     <div class="filters">
         <form method="GET" action="manage.php">
@@ -67,12 +83,12 @@ require_once "settings.php";
 
         <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-                <td><?= $row['EOInumber'] ?></td>
-                <td><?= $row['JobRef'] ?></td>
-                <td><?= $row['FirstName'] . " " . $row['LastName'] ?></td>
-                <td><?= $row['Email'] ?></td>
-                <td><?= $row['Phone'] ?></td>
-                <td><?= $row['Status'] ?></td>
+                <td><?= htmlspecialchars($row['EOInumber']) ?></td>
+                <td><?= htmlspecialchars($row['JobRef']) ?></td>
+                <td><?= htmlspecialchars($row['FirstName'] . " " . $row['LastName']) ?></td>
+                <td><?= htmlspecialchars($row['Email']) ?></td>
+                <td><?= htmlspecialchars($row['Phone']) ?></td>
+                <td><?= htmlspecialchars($row['Status']) ?></td>
                 <td>
                     <form method="POST" action="update_status.php">
                         <input type="hidden" name="eoi_number" value="<?= $row['EOInumber'] ?>">
