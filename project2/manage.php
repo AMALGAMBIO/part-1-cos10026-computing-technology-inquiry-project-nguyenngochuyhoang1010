@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/manage.css">
 </head>
 <?php
-require_once "settings.php";  // Ensure settings.php contains correct DB connection details
+require_once "settings.php";
 include 'header.inc';
 include 'menu.php';
 
@@ -25,7 +25,7 @@ if (isset($_GET['job_reference']) && !empty($_GET['job_reference'])) {
     $filter = "WHERE job_reference = '$job_reference'";
 } elseif (isset($_GET['name']) && !empty($_GET['name'])) {
     $name = $conn->real_escape_string(trim($_GET['name']));
-    $filter = "WHERE first_name LIKE '%$first_name%' OR last_name LIKE '%$last_name%'";
+    $filter = "WHERE CONCAT(first_name, ' ', last_name) LIKE '%$name%'";
 }
 
 // Fetch EOIs based on filter
@@ -47,7 +47,7 @@ if (!$result) {
 
 <form method="GET" action="manage.php">
     <label>Filter by Applicant Name:</label>
-    <input type="text" name="first_name">
+    <input type="text" name="name">
     <button type="submit">Search</button>
 </form>
 
@@ -84,7 +84,7 @@ if (!$result) {
                 <td><?= htmlspecialchars($row['status']) ?></td>
                 <td>
                     <form method="POST" action="update_status.php">
-                        <input type="hidden" name="eoi_number" value="<?= htmlspecialchars($row['EOInumber']) ?>">
+                        <input type="hidden" name="eoi_number" value="<?= htmlspecialchars($row['EOINumber']) ?>">
                         <select name="status">
                             <option value="New" <?= $row['status'] == "New" ? "selected" : "" ?>>New</option>
                             <option value="Current" <?= $row['status'] == "Current" ? "selected" : "" ?>>Current</option>
