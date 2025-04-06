@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff; /* Fallback color */
+    min-height: 100vh;
+}
+</style>
+</head>
+<body>
 <?php include 'menu.php'; ?>
 <link rel="stylesheet" href="styles/styleapply.css">
 <div class="container">
@@ -50,14 +73,11 @@
 
         <fieldset class="form-group checkbox-group">
             <legend>Skills</legend><br>
-            <input type="checkbox" id="skill1" name="Skill1" value="HTML">
-            <label for="skill1">HTML</label><br>
+            <label for="skill1">HTML<input type="checkbox" id="skill1" name="Skill1" value="HTML"></label><br>
 
-            <input type="checkbox" id="skill2" name="Skill2" value="CSS">
-            <label for="skill2">CSS</label><br>
+            <label for="skill2">CSS<input type="checkbox" id="skill2" name="Skill2" value="CSS"></label><br>
 
-            <input type="checkbox" id="skill3" name="Skill3" value="JavaScript">
-            <label for="skill3">JavaScript</label><br>
+            <label for="skill3">JavaScript<input type="checkbox" id="skill3" name="Skill3" value="JavaScript"></label><br>
         </fieldset>
 
         <fieldset class="form-group">
