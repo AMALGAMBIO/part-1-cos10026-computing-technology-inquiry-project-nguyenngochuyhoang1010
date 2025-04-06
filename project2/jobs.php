@@ -109,13 +109,14 @@
                     echo "<div class='job-card' onclick='selectJob(this)'>";
                     echo "<div class='job-info'>";
                     echo "<div class='job-title'>" . htmlspecialchars($row['title']) . "</div>";
+                    echo "<div class='job-ref'>" . htmlspecialchars($row['ref_num']) . "</div>";
                     echo "<div class='job-company'>" . htmlspecialchars($row['description']) . "</div>";
                     echo "<div class='job-tags'>
                             <span class='tag'>" . htmlspecialchars($row['main_skills']) . "</span>
                             <span class='tag'>" . htmlspecialchars($row['other_skills']) . "</span>
                           </div>";
                     echo "</div>";
-                    echo "<a class='apply-btn' href='apply.php?job_ref=" . urlencode($row['ref_num']) . "'>Apply</a>";
+                    echo "<a class='apply-btn' href='apply.php?'>Apply</a>";
                     echo "</div>";
                 }
             } else {
@@ -139,6 +140,5 @@
 <?php include_once "footer.inc"; ?>
 </body>
 </html>
-
 
 
