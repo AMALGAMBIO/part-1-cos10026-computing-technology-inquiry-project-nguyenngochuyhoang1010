@@ -8,7 +8,14 @@
         
     <fieldset class="form-group">
     <legend>Job Reference Number</legend>
-            <input type="text" id="job_reference" name="job_reference" required>
+    <label for="job_reference"></label>
+            <select id="job_reference" name="job_reference" required>
+                <option value="WD001">WD001</option>
+                <option value="GD002">GD002</option>
+                <option value="DE003">DE003</option>
+                <option value="BD004">BD004</option>
+                <option value="FD005">FD005</option>
+            </select>
     </fieldset>
 
     <fieldset class="form-group">
