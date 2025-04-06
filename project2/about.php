@@ -232,7 +232,7 @@
         <div class="team">
             <?php
             $team_members = [
-                ["name" => "Bui The Nam", "role" => "apply.php and process_eoi.php", "image" => "images/nambuithe.jpg"],
+                ["name" => "Bui The Nam", "role" => "apply.php, manage.php, process_eoi.php and creating EOI tables", "image" => "images/nambuithe.jpg"],
                 ["name" => "Cao Viet Anh", "role" => "jobs.php, manage_jobs.php and other features (delete_eoi.php, update_status.php)", "image" => "images/cao_viet_anh.jpg"],
                 ["name" => "Nguyen Ngoc Huy Hoang", "role" => "index.php, enhancements.php and style.css", "image" => "images/nguyen_ngoc_huy_hoang.jpg"]
             ];
