@@ -8,11 +8,17 @@
     <link rel="stylesheet" href="styles/stylemenu.css"> <!-- Menu Styling -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-            padding: 20px;
-        }
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ffffff; /* Fallback color */
+            min-height: 100vh;
+        }   
         h1 {
             text-align: center;
             color: #333;
